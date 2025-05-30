@@ -1,0 +1,14 @@
+ocorrencia_digital_streamlit/
+├── app.py                    # Interface Streamlit (principal)
+├── config.py                 # Chaves de API, configs do Supabase, URLs
+├── services/
+│   ├── supabase_client.py    # Conexão e funções para gravar dados no Supabase
+│   └── format_utils.py       # Funções auxiliares de formatação (datas, etc.)
+├── components/
+│   ├── form_vitimas.py       # Componente de múltiplas vítimas
+│   ├── form_autores.py       # Componente de múltiplos autores
+│   ├── form_testemunhas.py   # Componente de testemunhas
+├── models/
+│   └── schema.py             # Estruturas de dados (dicionários, schemas Pydantic se quiser)
+├── requirements.txt          # Dependências do projeto (streamlit, supabase-py, etc.)
+└── README.md                 # Instruções do projeto
