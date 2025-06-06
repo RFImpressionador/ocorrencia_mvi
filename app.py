@@ -38,29 +38,29 @@ if menu == "Registrar Ocorrência":
     obs_finais = st.text_area("Observações Finais", height=100)
 
     if st.button("Enviar"):
-        dados = {
-            "bo_numero": bo_num,
-            "data": str(data),
-            "hora": str(hora),
-            "cidade": cidade,
-            "local": local,
-            "vitimas": vitimas,
-            "autores": autores,
-            "descricao": descricao,
-            "motivacao": motivacao,
-            "testemunhas": testemunhas,
-            "observacoes_finais": obs_finais
-        }
+    dados = {
+        "bo_numero": bo_num,
+        "data": str(data),
+        "hora": str(hora),
+        "cidade": cidade,
+        "local": local,
+        "vitimas": vitimas,
+        "autores": autores,
+        "descricao": descricao,
+        "motivacao": motivacao,
+        "testemunhas": testemunhas,
+        "observacoes_finais": obs_finais
+    }
 
-        st.json(dados)
-        try:
-            ocorrencia = Ocorrencia(**dados)
-            save_occurrence(ocorrencia.dict())
-            st.success("Ocorrência registrada com sucesso no Supabase!")
-        except ValidationError as ve:
-            st.error(f"Dados inválidos: {ve}")
-        except Exception as e:
-            st.error(f"Erro ao salvar a ocorrência: {e}")
+    try:
+        ocorrencia = Ocorrencia(**dados)
+        resultado = save_occurrence(ocorrencia.dict())
+        st.success("Ocorrência registrada com sucesso!")
+        st.json(resultado.data)  # opcional: mostrar resposta do Supabase
+    except ValidationError as ve:
+        st.error(f"Dados inválidos: {ve}")
+    except Exception as e:
+        st.error(f"Erro ao salvar a ocorrência: {e}")
 
 elif menu == "Consultar Ocorrências":
     listar_ocorrencias()
