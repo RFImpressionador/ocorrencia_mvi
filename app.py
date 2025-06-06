@@ -1,5 +1,5 @@
 import streamlit as st
-from components import form_victims, form_authors, form_witnesses
+from components import form_vitimas, form_autores, form_testemunhas
 from services.listar_ocorrencias import listar_ocorrencias
 from services.supabase_client import save_occurrence
 from models.schema import Ocorrencia
