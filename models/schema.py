@@ -1,7 +1,7 @@
-from __future__ importar anotações
+from __future__ import anotações
 digitando import List , Opcional​ 
-from pydantic importar BaseModel
-from data e hora importar data, hora
+from pydantic import BaseModel
+from data e hora import data, hora
 
 classe Vitima ( BaseModel ):
  
