@@ -1,6 +1,7 @@
 import streamlit as st
 from components import form_vitimas, form_autores, form_testemunhas
 from services.listar_ocorrencias import listar_ocorrencias
+from services.supabase_client import salvar_ocorrencia
 import datetime
 
 # Configuração da página inicial do Streamlit
@@ -58,12 +59,12 @@ if menu == "Registrar Ocorrência":
             "obs_finais": obs_finais
         }
 
-        st.success("Dados coletados com sucesso! Veja o JSON abaixo:")
-        st.json(dados)
-
-        # Futuro: salvar os dados via Supabase (a ser implementado no supabase_client.py)
-        # from services.supabase_client import salvar_ocorrencia
-        # salvar_ocorrencia(dados)
+       st.json(dados)
+        try:
+            salvar_ocorrencia(dados)
+            st.success("Ocorrência registrada no Supabase com sucesso!")
+        except Exception as e:
+            st.error(f"Erro ao salvar ocorrência: {e}")
 
 elif menu == "Consultar Ocorrências":
     listar_ocorrencias()
