@@ -1,18 +1,19 @@
-# supabase_client.py
-
 from supabase import create_client, Client
-from config import SUPABASE_URL, SUPABASE_KEY
+import os
+
+# Carrega as variáveis de ambiente do Streamlit Secrets
+SUPABASE_URL: str = os.getenv("SUPABASE_URL")
+SUPABASE_KEY: str = os.getenv("SUPABASE_KEY")
 
 # Inicializa o cliente Supabase
-url: str = os.getenv("SUPABASE_URL")
-key: str = os.getenv("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# Função para salvar os dados da ocorrência
-
-def salvar_ocorrencia(dados: dict):
+def save_occurrence(dados: dict):
     """
-    Insere os dados recebidos do formulário na tabela 'ocorrencias'.
+    Insere os dados de ocorrência na tabela 'ocorrencias' do Supabase.
     """
-   response = supabase.table("ocorrencias").insert(data).execute()
-    return response
+    try:
+        resposta = supabase.table("ocorrencias").insert(dados).execute()
+        return resposta
+    except Exception as e:
+        raise RuntimeError(f"Erro ao salvar no Supabase: {e}")
