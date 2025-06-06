@@ -49,18 +49,20 @@ if menu == "Registrar Ocorrência":
 
      # Submit button
     if st.button("Enviar"):
-        data = {
-            "good_number" : good_number,
-            "date" : str (date),
-            "hour" : str (hour),
-            "city" : city,
-            "local": local,
-            "victims" : victims,
-            "authors" : authors,
-            "description" : description,
-            "motivation" : motivation,
-            "witnesses" : witnesses,
-            "obs_finals" : obs_finals
+        dados = {
+    "bo_numero": bo_num,
+    "data": str(data),
+    "hora": str(hora),
+    "cidade": cidade,
+    "local": local,
+    "vitimas": vitimas,
+    "autores": autores,
+    "descricao": descricao,
+    "motivacao": motivacao,
+    "testemunhas": testemunhas,
+    "observacoes_finais": obs_finais
+}
+
         }
 
         st.json(data)
