@@ -63,8 +63,6 @@ if menu == "Registrar Ocorrência":
     "observacoes_finais": obs_finais
 }
 
-        }
-
         st.json(data)
         try:
             occurrence = Occurrence(**data)
