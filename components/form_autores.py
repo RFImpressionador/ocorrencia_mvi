@@ -31,7 +31,7 @@ def exibir_formulario():
 
             autores.append({
                 "nome": nome,
-                "nasc": str(nasc),
+                "nasc": nasc,
                 "rg": rg,
                 "cpf": cpf,
                 "endereco": endereco,
