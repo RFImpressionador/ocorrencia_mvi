@@ -1,6 +1,6 @@
 import streamlit as st
 from components import form_vitimas, form_autores, form_testemunhas
-from listar_ocorrencias import listar_ocorrencias
+from services.listar_ocorrencias import listar_ocorrencias
 import datetime
 
 # Configuração da página inicial do Streamlit
