@@ -31,7 +31,7 @@ def exibir_formulario():
 
             vitimas.append({
                 "nome": nome,
-                "nasc": str(nasc),
+               "nasc": nasc,  # <-- removido str()
                 "rg": rg,
                 "cpf": cpf,
                 "endereco": endereco,
