@@ -4,7 +4,9 @@ from services.listar_ocorrencias import listar_ocorrencias
 from services.supabase_client import save_occurrence
 from models.schema import Ocorrencia
 from pydantic import ValidationError
-import data e hora
+from datetime import datetime
+agora = datetime.now()
+
 
 # Configuração da página inicial do Streamlit
 st.set_page_config(page_title="Formulário de Ocorrência", layout="wide")
