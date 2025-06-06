@@ -1,3 +1,5 @@
-streamlit
-requests
-supabase==1.0.3  # ou a versão correta
+streamlit==1.35.0
+supabase==1.0.3
+pydantic==2.7.1
+python-dotenv==1.0.1
+requests>=2.25.1
