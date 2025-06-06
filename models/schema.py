@@ -4,40 +4,38 @@ from pydantic import BaseModel
 from datetime import date, time
 
 class Vitima(BaseModel):
-    name: str
+    nome: str
     nasc: Optional[date] = None
     rg: Optional[str] = None
     cpf: Optional[str] = None
-    address: Optional [ str ] = None
+    endereco: Optional[str] = None
     obs: Optional[str] = None
     foto_url: Optional[str] = None
 
 class Autor(BaseModel):
-    name: str
+    nome: str
     nasc: Optional[date] = None
     rg: Optional[str] = None
     cpf: Optional[str] = None
-    address: Optional [ str ] = None
-    antecedents: Optional [ str ] = None
+    endereco: Optional[str] = None
+    antecedentes: Optional[str] = None
     foto_url: Optional[str] = None
 
-class Testimonah ( BaseModel ):
- 
-    name: str
+class Testemunha(BaseModel):
+    nome: str
     contato: Optional[str] = None
     obs: Optional[str] = None
     foto_url: Optional[str] = None
 
-class Occurrence ( BaseModel ):
- 
-    bo_num: str
+class Ocorrencia(BaseModel):
+    bo_numero: str
     data: date
-    time: time
-    city: str
+    hora: time
+    cidade: str
     local: str
-    victims: List [Victim]
-    authors: List [Author]
-    description: str
+    vitimas: List[Vitima]
+    autores: List[Autor]
+    descricao: str
     motivacao: str
-    witnesses: List [Witness]
-    obs_finais: Optional[str] = None
+    testemunhas: List[Testemunha]
+    observacoes_finais: Optional[str] = None
