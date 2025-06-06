@@ -1,6 +1,6 @@
 import streamlit as st
 import datetime
-from supabase_storage import upload_imagem_supabase
+from services.supabase_storage import upload_imagem_supabase
 
 def exibir_formulario():
     """
