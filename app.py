@@ -1,9 +1,9 @@
 import streamlit as st
-from components import form_vitimas, form_autores, form_testemunhas
-from services.listar_ocorrencias importar listar_ocorrencias
-from services.supabase_client import salvar_ocorrencia
-from modelos.schema importar Ocorrencia
-from pydantic importar ValidationError
+from components import form_victims, form_authors, form_witnesses
+from services.listar_ocorrencias import listar_ocorrencias
+from services.supabase_client import save_occurrence
+from models.schema import Ocorrencia
+from pydantic import ValidationError
 import data e hora
 
 # Configuração da página inicial do Streamlit
@@ -45,31 +45,31 @@ if menu == "Registrar Ocorrência":
     st.header("7. Anexos / Observações Finais")
     obs_finais = st.text_area("Observações Finais", height=100)
 
-    # Botão para enviar
-    se st.button( "Enviar" ):
-        dados = {
-            "bom_número" : bom_número,
-            "data" : str (data),
-            "hora" : str (hora),
-            "cidade": cidade,
-            "local" : local,
-            "vitimas": vitimas,
-            "autores" : autores,
-            "descricao": descricao,
-            "motivacao": motivacao,
-            "testemunhas": testemunhas,
-            "obs_finais": obs_finais
+     # Submit button
+    if st.button("Enviar"):
+        data = {
+            "good_number" : good_number,
+            "date" : str (date),
+            "hour" : str (hour),
+            "city" : city,
+            "local": local,
+            "victims" : victims,
+            "authors" : authors,
+            "description" : description,
+            "motivation" : motivation,
+            "witnesses" : witnesses,
+            "obs_finals" : obs_finals
         }
 
-        st.json(dados)
-        tentar :
-            ocorrencia = Ocorrencia(**dados)
-            save_occurrence(ocorrência. dict ())
-            st.success("Ocorrência registrada no Supabase com sucesso!")
-        exceto ValidationError como ve:
-            st.error(f"Dados inválidos: {ve}")
-        exceto Exceção como e:
-            st.error(f"Erro ao salvar ocorrência: {e}")
+        st.json(data)
+        try:
+            occurrence = Occurrence(**data)
+            save_occurrence(occurrence. dict ())
+            st.success( "Occurrence registered in Supabase successfully!" )
+        except ValidationError as ve:
+            st.error( f"Invalid data: {ve} " )
+        except Exception as e:
+            st.error( f"Error saving occurrence: {e} " )
 
 elif menu == "Consultar Ocorrências":
     listar_ocorrencias()
