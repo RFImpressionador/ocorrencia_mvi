@@ -1,7 +1,9 @@
 import streamlit as st
 from components import form_vitimas, form_autores, form_testemunhas
-from services.listar_ocorrencias import listar_ocorrencias
+from services.listar_ocorrencias importar listar_ocorrencias
 from services.supabase_client import salvar_ocorrencia
+from modelos.schema importar Ocorrencia
+from pydantic importar ValidationError
 import datetime
 
 # Configuração da página inicial do Streamlit
@@ -44,26 +46,29 @@ if menu == "Registrar Ocorrência":
     obs_finais = st.text_area("Observações Finais", height=100)
 
     # Botão para enviar
-    if st.button("Enviar"):
+    se st.button( "Enviar" ):
         dados = {
-            "bo_num": bo_num,
-            "data": str(data),
-            "hora": str(hora),
+            "bom_número" : bom_número,
+            "data" : str (data),
+            "hora" : str (hora),
             "cidade": cidade,
-            "local": local,
+            "local" : local,
             "vitimas": vitimas,
-            "autores": autores,
+            "autores" : autores,
             "descricao": descricao,
             "motivacao": motivacao,
             "testemunhas": testemunhas,
             "obs_finais": obs_finais
         }
 
-       st.json(dados)
-        try:
-            salvar_ocorrencia(dados)
+        st.json(dados)
+        tentar :
+            ocorrencia = Ocorrencia(**dados)
+            save_occurrence(ocorrência. dict ())
             st.success("Ocorrência registrada no Supabase com sucesso!")
-        except Exception as e:
+        exceto ValidationError como ve:
+            st.error(f"Dados inválidos: {ve}")
+        exceto Exceção como e:
             st.error(f"Erro ao salvar ocorrência: {e}")
 
 elif menu == "Consultar Ocorrências":
