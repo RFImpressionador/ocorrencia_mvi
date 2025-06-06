@@ -28,6 +28,9 @@ def exibir_formulario():
 
             testemunhas.append({
                 "nome": nome,
+                "rg": rg,
+                "cpf": cpf,
+                "endereco": endereco,
                 "contato": contato,
                 "obs": obs,
                 "foto_url": foto_url
