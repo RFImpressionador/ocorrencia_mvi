@@ -1,45 +1,43 @@
-from __future__ import anotações
-digitando import List , Opcional​ 
+from __future__ import annotations
+from typing import List, Optional
 from pydantic import BaseModel
-from data e hora import data, hora
+from datetime import date, time
 
-classe Vitima ( BaseModel ):
+class Vitima(BaseModel):
+    name: str
+    nasc: Optional[date] = None
+    rg: Optional[str] = None
+    cpf: Optional[str] = None
+    address: Optional [ str ] = None
+    obs: Optional[str] = None
+    foto_url: Optional[str] = None
+
+class Autor(BaseModel):
+    name: str
+    nasc: Optional[date] = None
+    rg: Optional[str] = None
+    cpf: Optional[str] = None
+    address: Optional [ str ] = None
+    antecedents: Optional [ str ] = None
+    foto_url: Optional[str] = None
+
+class Testimonah ( BaseModel ):
  
-    nome: str
-    nasc: Opcional [data] = Nenhum
-    rg: Opcional [ str ] = Nenhum
-    cpf: Opcional [ str ] = Nenhum
-    endereco: Optional[str] = None
-    obs: Opcional [ str ] = Nenhum
-    foto_url: Opcional [ str ] = Nenhum
+    name: str
+    contato: Optional[str] = None
+    obs: Optional[str] = None
+    foto_url: Optional[str] = None
 
-classe Autor ( BaseModel ):
- 
-    nome: str
-    nasc: Opcional [data] = Nenhum
-    rg: Opcional [ str ] = Nenhum
-    cpf: Opcional [ str ] = Nenhum
-    endereco: Optional[str] = None
-    antecedentes: Opcional [ str ] = Nenhum
-    foto_url: Opcional [ str ] = Nenhum
-
-classe Testimonah ( BaseModel ):
- 
-    nome: str
-    contato: Opcional [ str ] = Nenhum
-    obs: Opcional [ str ] = Nenhum
-    foto_url: Opcional [ str ] = Nenhum
-
-classe Ocorrência ( BaseModel ):
+class Occurrence ( BaseModel ):
  
     bo_num: str
-    dados: data
-    hora: time
-    cidade: str
+    data: date
+    time: time
+    city: str
     local: str
-    vitimas: List[Vitima]
-    autores: List[Autor]
-    descricao: str
-    motivação: str
-    testemunhas: List[Testemunha]
-    obs_finais: Opcional [ str ] = Nenhum
+    victims: List [Victim]
+    authors: List [Author]
+    description: str
+    motivacao: str
+    witnesses: List [Witness]
+    obs_finais: Optional[str] = None
